@@ -9,13 +9,15 @@ import React from "react";
 function City(props) {
   return (
     <div>
-      <div>
-        <h1>{props.cityName}</h1>
+      <div className="result-header">
+        <h2>{props.cityName}</h2>
+      </div>
+      <div className="result-box">
         <ul>
-          <li>{props.state}</li>
-          <li>{props.location}</li>
-          <li>{props.population}</li>
-          <li>{props.totalWages}</li>
+          <li>State: {props.state}</li>
+          <li>Location: {props.location}</li>
+          <li>Population: {props.population}</li>
+          <li>Total Wages: {props.totalWages}</li>
         </ul>
       </div>
     </div>

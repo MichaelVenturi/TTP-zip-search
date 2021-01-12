@@ -1,0 +1,44 @@
+body {
+  background-color: lightgray;
+}
+.app-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+.app-body {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  align-items: center;
+  /* justify-content: center; */
+}
+.result-header {
+  text-align: center;
+  text-decoration: underline;
+}
+.result-box {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 2px;
+  padding: 10px;
+  background-color: white;
+}
+.submit-area {
+  margin: 10px 0px;
+  font-weight: bold;
+}
+input {
+  padding: 5px;
+}
+button {
+  padding: 5px 12px;
+}
+ul {
+  margin: 0;
+  padding: 0px 20px;
+}
+h2 {
+  margin-bottom: 0;
+}

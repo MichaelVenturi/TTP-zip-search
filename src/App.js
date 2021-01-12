@@ -9,7 +9,7 @@ function App() {
       let response = await fetch(`http://ctp-zip-api.herokuapp.com/zip/${zip}`);
       console.log("response", response);
       if (!response.ok) {
-        throw new Error("ERROR");
+        throw new Error("Invalid zipcode");
       }
       let data = await response.json();
       console.log("data", data);
@@ -25,10 +25,15 @@ function App() {
 
     const data = await getResults(zip);
     //console.log("result", data[0]);
+    if (!data) {
+      alert("Invalid zipcode");
+      return;
+    }
 
     const resultDiv = document.querySelector("#results");
 
     let results = [];
+
     for (const dataSet of data) {
       results.push(
         <City
@@ -40,6 +45,7 @@ function App() {
         ></City>
       );
     }
+
     reactDOM.render(results, resultDiv);
   };
 
@@ -48,12 +54,14 @@ function App() {
       <div className="app-header">
         <h1>ZIP search</h1>
       </div>
-      <div>
-        <label for="zip-input">Zip Code: </label>
-        <input type="text" id="zip-input" name="zip-input"></input>
+      <div className="app-body">
+        <div className="submit-area">
+          <label for="zip-input">Zip Code </label>
+          <input type="text" id="zip-input" name="zip-input"></input>
+        </div>
         <button onClick={displayResults}>Search</button>
+        <div id="results"></div>
       </div>
-      <div id="results"></div>
     </div>
   );
 }
