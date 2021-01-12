@@ -1,15 +1,21 @@
 import React from "react";
 
+// City
+// State
+// LocationText
+//EstimatedPopulation
+// TotalWages
+
 function City(props) {
   return (
     <div>
       <div>
-        <h1>City Name</h1>
+        <h1>{props.cityName}</h1>
         <ul>
-          <li>state</li>
-          <li>location</li>
-          <li>population</li>
-          <li>tota wages</li>
+          <li>{props.state}</li>
+          <li>{props.location}</li>
+          <li>{props.population}</li>
+          <li>{props.totalWages}</li>
         </ul>
       </div>
     </div>

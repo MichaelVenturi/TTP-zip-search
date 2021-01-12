@@ -4,15 +4,7 @@ import "./App.css";
 import City from "./components/City";
 
 function App() {
-  function displayResults() {
-    getResults();
-    const resultDiv = document.querySelector("#results");
-
-    reactDOM.render(<City></City>, resultDiv);
-  }
-
-  const getResults = async () => {
-    const zip = document.querySelector("#zip-input").value;
+  const getResults = async (zip) => {
     try {
       let response = await fetch(`http://ctp-zip-api.herokuapp.com/zip/${zip}`);
       console.log("response", response);
@@ -21,9 +13,34 @@ function App() {
       }
       let data = await response.json();
       console.log("data", data);
+      return data;
     } catch (error) {
       console.log("error", error);
     }
+  };
+  // NOTE FOR SELF: since getResults is asynchronous, this function must be too, otherwise it will return before
+  // getResults has finished (why async and await must be used here)
+  const displayResults = async () => {
+    const zip = document.querySelector("#zip-input").value;
+
+    const data = await getResults(zip);
+    //console.log("result", data[0]);
+
+    const resultDiv = document.querySelector("#results");
+
+    let results = [];
+    for (const dataSet of data) {
+      results.push(
+        <City
+          cityName={dataSet.City}
+          state={dataSet.State}
+          location={dataSet.LocationText}
+          population={dataSet.EstimatedPopulation}
+          totalWages={dataSet.TotalWages}
+        ></City>
+      );
+    }
+    reactDOM.render(results, resultDiv);
   };
 
   return (
