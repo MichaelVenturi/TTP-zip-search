@@ -17,7 +17,7 @@ function City(props) {
           <li>State: {props.state}</li>
           <li>Location: {props.location}</li>
           <li>Population: {props.population}</li>
-          <li>Total Wages: {props.totalWages}</li>
+          <li>Total Wages: ${props.totalWages}</li>
         </ul>
       </div>
     </div>
